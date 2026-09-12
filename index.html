@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little Garden For You 🌷</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  overflow:hidden;
+  font-family:Georgia, serif;
+  color:white;
+
+  background:
+    radial-gradient(circle at 50% 15%, #35456e 0%, transparent 28%),
+    linear-gradient(to bottom, #0b1026 0%, #1b2949 48%, #284735 100%);
+}
+
+/* ---------- STARS ---------- */
+
+.stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+}
+
+.star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:white;
+  border-radius:50%;
+  box-shadow:0 0 8px white;
+  animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+  from{
+    opacity:.25;
+    transform:scale(.7);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1.5);
+  }
+}
+
+
+/* ---------- MOON ---------- */
+
+.moon{
+  position:absolute;
+  top:8%;
+  right:10%;
+
+  width:110px;
+  height:110px;
+
+  border-radius:50%;
+  background:#fff8d8;
+
+  box-shadow:
+    0 0 25px #fff8d8,
+    0 0 70px rgba(255,248,216,.5);
+}
+
+
+/* ---------- MAIN ---------- */
+
+.container{
+  min-height:100vh;
+  position:relative;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  text-align:center;
+  padding-top:45px;
+}
+
+
+/* ---------- TITLE ---------- */
+
+.title{
+  font-size:clamp(2.2rem,6vw,4.5rem);
+  font-weight:normal;
+
+  text-shadow:0 0 20px rgba(255,255,255,.5);
+
+  animation:appear 1.5s ease;
+}
+
+.subtitle{
+  margin-top:12px;
+  font-size:1rem;
+
+  color:#eee7f7;
+
+  padding:0 20px;
+  max-width:550px;
+
+  line-height:1.6;
+
+  animation:appear 2s ease;
+}
+
+@keyframes appear{
+  from{
+    opacity:0;
+    transform:translateY(-20px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+/* ---------- GARDEN ---------- */
+
+.garden{
+  position:relative;
+
+  width:min(100%,1000px);
+  height:600px;
+
+  margin-top:10px;
+}
+
+
+/* ---------- GRASS ---------- */
+
+.ground{
+  position:absolute;
+
+  bottom:0;
+  width:100%;
+  height:45%;
+
+  background:
+    radial-gradient(circle at 20% 20%, #426c48, transparent 30%),
+    radial-gradient(circle at 70% 30%, #365f42, transparent 35%),
+    linear-gradient(to top,#183c2a,#315a3d);
+
+  border-radius:50% 50% 0 0;
+}
+
+
+/* ---------- PATH ---------- */
+
+.path{
+  position:absolute;
+
+  bottom:0;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  width:260px;
+  height:330px;
+
+  background:
+    linear-gradient(to bottom,
+    rgba(210,190,160,.12),
+    rgba(170,145,110,.45));
+
+  clip-path:polygon(
+    45% 0,
+    55% 0,
+    100% 100%,
+    0 100%
+  );
+
+  z-index:2;
+}
+
+
+/* ---------- FIREFLIES ---------- */
+
+.firefly{
+  position:absolute;
+
+  width:5px;
+  height:5px;
+
+  border-radius:50%;
+
+  background:#fff4a8;
+
+  box-shadow:
+    0 0 10px #fff4a8,
+    0 0 20px #fff4a8;
+
+  animation:fly 5s infinite ease-in-out;
+}
+
+@keyframes fly{
+  0%{
+    transform:translate(0,0);
+    opacity:.2;
+  }
+
+  50%{
+    transform:translate(25px,-45px);
+    opacity:1;
+  }
+
+  100%{
+    transform:translate(0,0);
+    opacity:.3;
+  }
+}
+
+
+/* ---------- FLOWERS ---------- */
+
+.flower{
+  position:absolute;
+
+  background:none;
+  border:none;
+
+  cursor:pointer;
+
+  font-size:70px;
+
+  z-index:5;
+
+  transition:.3s;
+
+  filter:drop-shadow(0 0 8px rgba(255,255,255,.25));
+
+  animation:float 4s ease-in-out infinite;
+}
+
+.flower:hover{
+  transform:scale(1.25) rotate(5deg);
+
+  filter:drop-shadow(0 0 20px white);
+}
+
+@keyframes float{
+  0%,100%{
+    translate:0 0;
+  }
+
+  50%{
+    translate:0 -10px;
+  }
+}
+
+
+/* ---------- FLOWER POSITIONS ---------- */
+
+.rose{
+  left:6%;
+  bottom:70px;
+}
+
+.sunflower{
+  left:20%;
+  bottom:150px;
+  animation-delay:.5s;
+}
+
+.tulip{
+  left:38%;
+  bottom:65px;
+  animation-delay:1s;
+}
+
+.lavender{
+  right:32%;
+  bottom:150px;
+  animation-delay:1.5s;
+}
+
+.lotus{
+  right:8%;
+  bottom:70px;
+  animation-delay:2s;
+}
+
+.cherry{
+  left:8%;
+  bottom:270px;
+  animation-delay:.8s;
+}
+
+.lily{
+  right:10%;
+  bottom:270px;
+  animation-delay:1.2s;
+}
+
+.jasmine{
+  left:50%;
+  transform:translateX(-50%);
+  bottom:245px;
+  animation-delay:2.2s;
+}
+
+
+/* ---------- POPUP ---------- */
+
+.overlay{
+  position:fixed;
+
+  inset:0;
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  background:rgba(4,7,20,.7);
+
+  backdrop-filter:blur(8px);
+
+  z-index:100;
+
+  padding:20px;
+}
+
+.popup{
+  width:min(90%,520px);
+
+  padding:42px 32px;
+
+  border-radius:30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.18),
+      rgba(255,255,255,.07)
+    );
+
+  border:1px solid rgba(255,255,255,.25);
+
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+
+  backdrop-filter:blur(20px);
+
+  text-align:center;
+
+  animation:popupAppear .4s ease;
+}
+
+@keyframes popupAppear{
+  from{
+    opacity:0;
+    transform:scale(.8);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+.popupFlower{
+  font-size:65px;
+  margin-bottom:12px;
+}
+
+.popup h2{
+  font-weight:normal;
+  font-size:1.8rem;
+
+  margin-bottom:18px;
+}
+
+.popup p{
+  font-size:1.05rem;
+
+  line-height:1.8;
+
+  color:#f4edf7;
+}
+
+.close{
+  margin-top:25px;
+
+  padding:11px 24px;
+
+  border-radius:30px;
+
+  border:1px solid rgba(255,255,255,.3);
+
+  background:rgba(255,255,255,.12);
+
+  color:white;
+
+  cursor:pointer;
+
+  font-family:Georgia, serif;
+
+  transition:.3s;
+}
+
+.close:hover{
+  background:rgba(255,255,255,.25);
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:600px){
+
+  .container{
+    padding-top:40px;
+  }
+
+  .garden{
+    height:620px;
+  }
+
+  .flower{
+    font-size:52px;
+  }
+
+  .moon{
+    width:75px;
+    height:75px;
+    right:6%;
+  }
+
+  .popup{
+    padding:35px 25px;
+  }
+
+  .popup p{
+    font-size:.98rem;
+  }
+
+  .cherry{
+    bottom:300px;
+  }
+
+  .lily{
+    bottom:300px;
+  }
+
+  .jasmine{
+    bottom:250px;
+  }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- STARS -->
+
+<div class="stars">
+
+  <div class="star" style="top:8%; left:8%;"></div>
+  <div class="star" style="top:15%; left:25%;"></div>
+  <div class="star" style="top:10%; left:48%;"></div>
+  <div class="star" style="top:25%; left:70%;"></div>
+  <div class="star" style="top:12%; left:88%;"></div>
+  <div class="star" style="top:38%; left:15%;"></div>
+  <div class="star" style="top:30%; left:45%;"></div>
+  <div class="star" style="top:42%; left:82%;"></div>
+
+</div>
+
+
+<!-- MOON -->
+
+<div class="moon"></div>
+
+
+<div class="container">
+
+  <h1 class="title">
+    A Little Garden For You 🌷
+  </h1>
+
+  <p class="subtitle">
+    Is garden ka har flower tumhare liye
+    ek chhoti si baat sambhal ke rakhta hai… 💌
+  </p>
+
+
+  <div class="garden">
+
+    <div class="ground"></div>
+
+    <div class="path"></div>
+
+
+    <!-- FIREFLIES -->
+
+    <div class="firefly" style="left:15%; bottom:200px;"></div>
+    <div class="firefly" style="left:30%; bottom:280px;"></div>
+    <div class="firefly" style="left:65%; bottom:220px;"></div>
+    <div class="firefly" style="right:15%; bottom:180px;"></div>
+    <div class="firefly" style="left:50%; bottom:350px;"></div>
+
+
+    <!-- 🌹 ROSE -->
+
+    <button class="flower rose" onclick="openFlower(0)">
+      🌹
+    </button>
+
+
+    <!-- 🌻 SUNFLOWER -->
+
+    <button class="flower sunflower" onclick="openFlower(1)">
+      🌻
+    </button>
+
+
+    <!-- 🌷 TULIP -->
+
+    <button class="flower tulip" onclick="openFlower(2)">
+      🌷
+    </button>
+
+
+    <!-- 🪻 LAVENDER -->
+
+    <button class="flower lavender" onclick="openFlower(3)">
+      🪻
+    </button>
+
+
+    <!-- 🪷 LOTUS -->
+
+    <button class="flower lotus" onclick="openFlower(4)">
+      🪷
+    </button>
+
+
+    <!-- 🌸 CHERRY BLOSSOM -->
+
+    <button class="flower cherry" onclick="openFlower(5)">
+      🌸
+    </button>
+
+
+    <!-- 🤍 LILY -->
+
+    <button class="flower lily" onclick="openFlower(6)">
+      🤍
+    </button>
+
+
+    <!-- 🌼 JASMINE -->
+
+    <button class="flower jasmine" onclick="openFlower(7)">
+      🌼
+    </button>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- POPUP -->
+
+<div class="overlay" id="overlay">
+
+  <div class="popup">
+
+    <div class="popupFlower" id="popupFlower">
+      🌷
+    </div>
+
+    <h2 id="popupTitle">
+      If you were a flower, Arshu…
+    </h2>
+
+    <p id="popupMessage"></p>
+
+    <button class="close" onclick="closePopup()">
+      Back to the garden 🌿
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+
+const flowers = [
+
+
+/* 🌹 ROSE */
+
+{
+  emoji:"🌹",
+
+  message:`Toh tu ek Rose hota, kyunki tu sabse pyaara hai. Tu humesha itna pyaar baantta hai aur khud bhi har kisi ke liye itna special ban jaata hai. Shayad isiliye har koi tujhe itna pasand karta hai… just like a rose. 🌹🥹🫶🏻💋`
+},
+
+
+
+/* 🌻 SUNFLOWER */
+
+{
+  emoji:"🌻",
+
+  message:`Toh tu ek Sunflower hota. Log kehte hain ki har mushkil mein saath nibhane wale kam milte hain, par mere paas tu hai, mera bby. 🥹💋 Tu meri life ka woh Sunflower hai jiska endless support aur loyalty mere liye sabse bada sukoon hai. Kyunki jaise ek Sunflower har situation mein sirf sun ki taraf hi rukh rakhta hai, waise hi tu mere liye hai—humesha mujhe support karta hai aur humesha mere liye loyal rehta hai. 🥹🌻💋`
+},
+
+
+
+/* 🌷 TULIP */
+
+{
+  emoji:"🌷",
+
+  message:`Toh tu ek Tulip hota, kyunki mere liye pyaar ka matlab bas tujhse juda hona hai. Mujhe tujhse koi shikayat nahi, koi demand nahi… bas meri life mein tera hona hi meri sabse badi khushi hai, bachu. 🥹💋🌷`
+},
+
+
+
+/* 🪻 LAVENDER */
+
+{
+  emoji:"🪻",
+
+  message:`Toh tu ek Lavender hota, kyunki jaise Lavender apni khushboo se saara sukoon de deta hai, waise hi tu meri saari tension aur pareshani door kar deta hai. Tujhse baat karke ya bas tere saath rehkar mujhe duniya ka sabse pyara sukoon milta hai… mera shona. 🥹🪻💋`
+},
+
+
+
+/* 🪷 LOTUS */
+
+{
+  emoji:"🪷",
+
+  message:`Toh tu ek Lotus hota, kyunki tu baaki sabse bilkul alag aur bahut khaas hai. Na teri aadatein baaki logon jaisi hain, na tera attitude… aur shayad isi liye tu bheed mein bhi apni good vibes ke saath sabse alag aur attractive lagta hai. Bilkul ek beautiful aur royal Lotus ki tarah… my cutipiee. 🥹🪷💋`
+},
+
+
+
+/* 🌸 CHERRY BLOSSOM */
+
+{
+  emoji:"🌸",
+
+  message:`Toh tu ek Cherry Blossom hota, kyunki tere saath bitaya hua har chhota sa moment bhi mere liye bohot precious hai. Chahe bas thodi der baat ho ya thoda sa waqt saath ho, tu mere din ka woh hissa hai jise main kabhi for granted nahi leti. 🥹💖 Har moment with you is special to me, mera sweetupiee. 🌸🫶🏻💋`
+},
+
+
+
+/* 🤍 LILY */
+
+{
+  emoji:"🤍",
+
+  message:`Toh tu ek Lily hota, kyunki tere meri life mein aane ke baad sab kuch thoda aur positive aur beautiful sa lagne laga hai. Tu mujhe humesha grow karne, better karne aur apne dreams ke peeche jaane ke liye encourage karta hai. Shayad isiliye tu meri little lucky charm bhi hai… mera cuteness ka pitara. 🥹🤍🫶🏻💋`
+},
+
+
+
+/* 🌼 JASMINE */
+
+{
+  emoji:"🌼",
+
+  message:`Toh tu ek Jasmine hota, kyunki jaise Jasmine apni khushboo se poori jagah ko beautiful bana deta hai, waise hi tu apni pyaari si personality aur apne khoobsurat dil se sabke aas-paas khushiyan bikher deta hai. Tu sirf meri life mein happiness nahi laata, balki somehow meri poori duniya ko hi thoda aur beautiful aur brighter bana deta hai… meri jaan. 🥹🌼🌍💋`
+}
+
+];
+
+
+function openFlower(index){
+
+  document.getElementById("popupFlower").innerText =
+    flowers[index].emoji;
+
+  document.getElementById("popupMessage").innerText =
+    flowers[index].message;
+
+  document.getElementById("overlay").style.display =
+    "flex";
+}
+
+
+function closePopup(){
+
+  document.getElementById("overlay").style.display =
+    "none";
+}
+
+
+/* CLICK OUTSIDE POPUP TO CLOSE */
+
+document.getElementById("overlay").addEventListener("click", function(e){
+
+  if(e.target === this){
+    closePopup();
+  }
+
+});
+
+</script>
+
+</body>
+    </html>
